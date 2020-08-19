@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title - EasyProjectG</title>
+    @*@Styles.Render("~/Content/css")*@
+    @*@Styles.Render("~/Content/ej2/bootstrap.css")*@
+    @*@Scripts.Render("~/Scripts/ej2/ej2.min.js")*@
+    <!-- BEGIN PLUGINS STYLES -->
+    <link rel="stylesheet" href="~/assets/vendor/open-iconic/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/fontawesome/css/all.css">
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap-colorselector.css">
+    <link rel="stylesheet" href="~/assets/vendor/datatables/extensions/buttons/buttons.bootstrap4.min.css">
+    @*<link rel="stylesheet" href="~/assets/vendor/flatpickr/flatpickr.min.css">*@
+    <!-- END PLUGINS STYLES -->
+    <!-- END PLUGINS STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link rel="stylesheet" href="~/assets/stylesheets/theme.min.css" data-skin="default">
+    <link rel="stylesheet" href="~/assets/stylesheets/theme-dark.min.css" data-skin="dark">
+    <link rel="stylesheet" href="~/assets/stylesheets/custom.css">
+    <!-- Disable unused skin immediately -->
+    <script>
+        var skin = localStorage.getItem('skin') || 'default';
+        var unusedLink = document.querySelector('link[data-skin]:not([data-skin="' + skin + '"])');
+
+        unusedLink.setAttribute('rel', '');
+        unusedLink.setAttribute('disabled', true);
+    </script>
+    <!-- END THEME STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- styles for specific page goes here -->
+    <!-- END PAGE LEVEL STYLES -->
+</head>
+<body>
+    <div class="app">
+        @Html.Partial("_Header")
+        @Html.Partial("_ASide")
+        <!-- .app-main -->
+        <main class="app-main">
+
+            @RenderBody()
+
+            @Html.Partial("_Footer")
+        </main><!-- /.app-main -->
+    </div><!-- /.app -->
+    <!-- BEGIN BASE JS -->
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/popper.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap-colorselector.js"></script>
+    <!-- END BASE JS -->
+    <!-- BEGIN PLUGINS JS -->
+    <script src="~/assets/vendor/pace/pace.min.js"></script>
+    <script src="~/assets/vendor/stacked-menu/stacked-menu.min.js"></script>
+    <script src="~/assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+    <script src="~/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/javascript/pages/dataTables.bootstrap.js"></script>
+    <script src="~/assets/vendor/datatables/extensions/buttons/dataTables.buttons.min.js"></script>
+    <script src="~/assets/vendor/datatables/extensions/buttons/buttons.bootstrap4.min.js"></script>
+    <script src="~/assets/vendor/datatables/extensions/buttons/buttons.html5.min.js"></script>
+    <script src="~/assets/vendor/datatables/extensions/buttons/buttons.print.min.js"></script>
+    <script src="~/assets/vendor/moment/moment.min.js"></script>
+
+    <!-- END PLUGINS JS -->
+    <!-- BEGIN THEME JS -->
+    <script src="~/assets/javascript/theme.min.js"></script>
+    <!-- END THEME JS -->
+    <!-- BEGIN PAGE LEVEL JS -->
+    @*<script src="~/assets/javascript/pages/dataTables.bootstrap.js"></script>
+        <script src="assets/javascript/pages/datatables-demo.js"></script>
+            <script src="~/assets/javascript/pages/dashboard-demo.js"></script>*@
+    <!-- END PAGE LEVEL JS -->
+    @Html.EJS().ScriptManager()
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

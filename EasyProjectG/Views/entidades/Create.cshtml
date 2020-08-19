@@ -1,0 +1,153 @@
+﻿@model EasyProjectG.Models.entidade
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!-- .modal-dialog -->
+    <div class="modal-dialog" role="document">
+        <!-- .modal-content -->
+        <div class="modal-content">
+            <!-- .modal-header -->
+            <div class="modal-header">
+                <h6 id="clientNewModalLabel" class="modal-title inline-editable">
+                    <span class="sr-only">Client name</span>
+                    @*<input type="text" class="form-control form-control-lg" placeholder="E.g. Stilearning, Inc." required="">*@
+                </h6>
+            </div><!-- /.modal-header -->
+            <!-- .modal-body -->
+            <div class="modal-body">
+                <!-- .form-row -->
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeSigla, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeSigla, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeSigla, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeCor, htmlAttributes: new { @class = "control-label" })
+                             <select name="@Html.NameFor(m => m.entidadeCor)" id="@Html.IdFor(m => m.entidadeCor)" class="form-control">
+
+                                @foreach (var item in ViewBag.customColors)
+                                {
+                                    <option value=@item.tipoDescricao data-color=@item.tipoNome>
+                                        @item.tipoDescricao
+                                    </option>
+                                }
+                            </select>
+                            <script>
+                                $('#entidadeCor').colorselector();
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeRazaoSocial, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeRazaoSocial, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeRazaoSocial, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeFone, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeFone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeFone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeSite, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeSite, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeSite, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeFacebook, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeFacebook, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeFacebook, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeWhatsapp, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeWhatsapp, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeWhatsapp, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeLogradouro, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeLogradouro, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeLogradouro, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeCEP, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeCEP, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeCEP, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeBairro, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeBairro, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeBairro, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeCidade, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeCidade, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeCidade, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadeEstado, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadeEstado, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadeEstado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidadePais, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.entidadePais, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.entidadePais, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidade_tipoId, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownList("entidade_tipoId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.entidade_tipoId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.entidade_nucleoId, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownList("entidade_nucleoId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.entidade_nucleoId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div><!-- /.form-row -->
+            </div><!-- /.modal-body -->
+            <!-- .modal-footer -->
+            <div class="modal-footer">
+                <button type="submit" value="Create" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div><!-- /.modal-footer -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+}

@@ -1,0 +1,124 @@
+﻿@*@model PagedList.IPagedList<EasyProjectG.Models.tipo>
+    @using PagedList.Mvc;*@
+
+@model IEnumerable<EasyProjectG.ViewModel.tipoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="wrapper">
+    <div class="page">
+        <!-- .page -->
+        <div class="page-inner">
+            <header class="page-title-bar">
+                <!-- .breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">
+                            <a href="#"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Tipos</a>
+                        </li>
+                    </ol>
+                </nav><!-- /.breadcrumb -->
+                <!-- floating action -->
+                <button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button> <!-- /floating action -->
+                <!-- title and toolbar -->
+                <div class="d-md-flex align-items-md-start">
+                    <h1 class="page-title mr-sm-auto"> Tipos </h1><!-- .btn-toolbar -->
+                    <div class="dt-buttons btn-group"> <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="myTable" type="button"><span>Copy</span></button> <button class="btn btn-secondary buttons-print" tabindex="0" aria-controls="myTable" type="button"><span>Print</span></button> </div><!-- /.btn-toolbar -->
+                </div><!-- /title and toolbar -->
+            </header>
+            <div class="page-section">
+                <div class="card card-fluid">
+                    <!-- .card-header -->
+                    <div class="card-header"> Tabela tipos </div>
+                    <!-- /.card-header -->
+                    <!-- .card-body -->
+                    <div class="card-body">
+                        <!-- .table -->
+                        <table id="tipo" class="table">
+                            <!-- thead -->
+                            <thead>
+                                <tr>
+                                    <th> @Html.ActionLink("Nome", "Index", new { ordem = ViewBag.DescSortParm, filtro = ViewBag.Filtro }) </th>
+                                    <th> @Html.ActionLink("Id Grupo", "Index", new { ordem = ViewBag.DescSortParm, filtro = ViewBag.Filtro })  </th>
+                                    <th> @Html.ActionLink("Descrição", "Index", new { ordem = ViewBag.DescSortParm, filtro = ViewBag.Filtro }) </th>
+                                    <th style="width:100px; min-width:100px;"> &nbsp; </th>
+                                </tr>
+                            </thead><!-- /thead -->
+                            <tbody></tbody>
+                        </table><!-- /.table -->
+                    </div><!-- /.card-body -->
+                </div>
+
+
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+
+                @*<div class="mt-4">
+                        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+                        @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new { page, ordem = ViewBag.CurrentSort, filtro = ViewBag.Filtro }))
+                    </div>*@
+            </div>
+        </div>
+    </div><!-- /.page -->
+</div><!-- .app-footer -->
+
+<div id="modal" class="modal fade" />
+
+@section scripts{
+    <script>
+        $(function () {
+            altair_scrum_board.consultaTarefa();
+        });
+        // metrics-graphics
+        altair_scrum_board = {
+            consultaTarefa: function GetDados() {
+
+                $.get('/tipos/listaTipo', {},
+                    function (dados) {
+
+                        var tbltipo = $("#tipo");
+                        $.each(dados, function (index, i) {
+                            var tr = $('<tr role="row" class="odd"></tr>');
+                            tr.html('<td class="align-middle "><a href="#598">' + i.tipoNome + '</a></td>' +
+                                '<td class=" align-middle">' + i.tipoGrupo_tipoId + '</td>' +
+                                '<td class=" align-middle">' + i.tipoDescricao + '</td>' +
+                                '<td class=" align-middle text-right">' +
+                                '<button id="myBtn" type="button" class="btn btn-sm btn-icon btn-secondary edit" data-toggle="modal" data-id=' + i.tipoId + '>' +
+                                '<i class= "fa fa-pencil-alt" onclick="getDados2(' + i.tipoId + ');return false"></i > <span class="sr-only">Edit</span>' +
+                                '</button > ' +
+                                '<button type="button" class="btn btn-sm btn-icon btn-secondary delete" data-toggle="modal" data-id=' + i.tipoId + '>' +
+                                '<i class="far fa-trash-alt" onclick="getDados2(' + i.tipoId + ');return false"></i> <span class="sr-only">Remove</span>' +
+                                '</button> ' +
+                                '</td>');
+                            tbltipo.append(tr);
+                        })
+                        localStorage.setItem("tbltipo", dados);
+                        var $dt_default = $('#tipo');
+                        if ($dt_default.length) {
+                            $dt_default.DataTable();
+                        }
+                    }
+                )
+            }
+        }
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-116692175-1');
+    </script>
+
+}
+
+<!-- BEGIN PAGE LEVEL JS -->
+@*<script src="~/assets/javascript/pages/dataTables.bootstrap.js"></script>
+    <script src="~/assets/javascript/pages/datatables-demo.js"></script>*@
+<script src="~/assets/javascript/pages/tipos.js"></script>

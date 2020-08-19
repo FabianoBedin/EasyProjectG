@@ -1,0 +1,153 @@
+﻿@model IEnumerable<EasyProjectG.Models.projeto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pessoa.pessoaNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo.tipoNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoObjetivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoData)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoDataIni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoDataFim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoSemestre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoContaCusto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoContaIntegracao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoCompartilhado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projeto_usuarioId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoDataAtualizado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoTitulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoPasta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoVinculo_projetoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoMonitoramento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoResultadoPrevisto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projetoTaxas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projeto_setorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.projeto_entidadeId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pessoa.pessoaNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo.tipoNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoObjetivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoData)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoDataIni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoDataFim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoSemestre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoContaCusto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoContaIntegracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoCompartilhado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projeto_usuarioId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoDataAtualizado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoTitulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoPasta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoVinculo_projetoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoMonitoramento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoResultadoPrevisto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projetoTaxas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projeto_setorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.projeto_entidadeId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.projetoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.projetoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.projetoId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model EasyProjectG.Models.tipo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tipo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoGrupo_tipoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoGrupo_tipoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoDescricao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tipoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

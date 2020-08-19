@@ -1,0 +1,86 @@
+﻿@model EasyProjectG.Models.pessoa
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!-- .modal-dialog -->
+    <div class="modal-dialog" role="document">
+        <!-- .modal-content -->
+        <div class="modal-content">
+            <!-- .modal-header -->
+            <div class="modal-header">
+                <h6 id="clientContactNewModalLabel" class="modal-title inline-editable">
+                    <span class="sr-only">EDIT name</span> <input type="text" class="form-control form-control-lg" placeholder="Nome curto (ex.Pedrinho)">
+                </h6>
+            </div><!-- /.modal-header -->
+            <!-- .modal-body -->
+            <div class="modal-body">
+                <!-- .form-group -->
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.pessoaId)
+                <hr />
+                <div class="col-md-12">
+                    <div class="form-label-group">
+                        @Html.LabelFor(model => model.pessoaNome, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.pessoaNome, new { htmlAttributes = new { @class = "form-control placeholder-shown", @placeholder = "Nome", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.pessoaNome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pessoaLinkLattes, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.pessoaLinkLattes, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.pessoaLinkLattes, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pessoaEspecialidade, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.pessoaEspecialidade, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.pessoaEspecialidade, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pessoaFormacao, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.pessoaFormacao, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.pessoaFormacao, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pessoaFoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.pessoaFoto, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pessoaFoto, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pessoaEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.pessoaEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pessoaEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pessoaFone, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.pessoaFone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pessoaFone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pessoa_entidadeId, "pessoa_entidadeId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.DropDownList("pessoa_entidadeId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.pessoa_entidadeId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div><!-- /.modal-body -->
+            <!-- .modal-footer -->
+            <div class="modal-footer">
+                <button type="submit" value="EDIT" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div><!-- /.modal-footer -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+}
+

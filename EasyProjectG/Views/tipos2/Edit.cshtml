@@ -1,0 +1,57 @@
+﻿@model EasyProjectG.Models.tipo
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <!-- .modal-dialog -->
+    <div class="modal-dialog" role="document">
+        <!-- .modal-content -->
+        <div class="modal-content">
+            <!-- .modal-header -->
+            <div class="modal-header">
+                <h6 id="clientContactEditModalLabel" class="modal-title inline-editable">
+                    <span class="sr-only">Contact name</span> <input type="text" class="form-control form-control-lg" value="Edição de Tipo" placeholder="Name (e.g. John Doe)" required="">
+                </h6>
+            </div><!-- /.modal-header -->
+            <!-- .modal-body -->
+            <div class="modal-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.tipoId)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tipoNome, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.tipoNome, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Your EmailID...!!!" } })
+                        @Html.ValidationMessageFor(model => model.tipoNome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tipoGrupo_tipoId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.tipoGrupo_tipoId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tipoGrupo_tipoId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tipoDescricao, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="form-label-group">
+                        @Html.EditorFor(model => model.tipoDescricao, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tipoDescricao, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div><!-- /.modal-body -->
+            <!-- .modal-footer -->
+            <div class="modal-footer">
+                <button type="submit" value="Save" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div><!-- /.modal-footer -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+}

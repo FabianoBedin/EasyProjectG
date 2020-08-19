@@ -1,0 +1,66 @@
+﻿@model EasyProjectG.Models.pessoa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pessoa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.entidade.entidadeRazaoSocial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.entidade.entidadeRazaoSocial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoaNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoaNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoaLinkLattes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoaLinkLattes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoaespecialidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoaespecialidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoaFormacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoaFormacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pessoaFoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pessoaFoto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pessoaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

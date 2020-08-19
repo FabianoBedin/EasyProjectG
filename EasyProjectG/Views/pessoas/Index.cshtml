@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EasyProjectG.Models.pessoa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.entidade.entidadeRazaoSocial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pessoaNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pessoaLinkLattes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pessoaEspecialidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pessoaFormacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pessoaFoto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.entidade.entidadeRazaoSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pessoaNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pessoaLinkLattes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pessoaEspecialidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pessoaFormacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pessoaFoto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.pessoaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.pessoaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.pessoaId })
+        </td>
+    </tr>
+}
+
+</table>

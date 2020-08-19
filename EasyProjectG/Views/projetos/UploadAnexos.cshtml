@@ -1,0 +1,98 @@
+﻿@model EasyProjectG.Models.projeto
+
+@{
+    /**/
+
+    ViewBag.Title = "Delete";
+}
+
+@{ Layout = null; }
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!-- .modal-dialog -->
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/jquery.fileupload.css" rel="stylesheet" />*@
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/jquery.ui.widget.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.fileupload.js"></script>
+
+    <div class="modal-dialog" role="document">
+        <!-- .modal-content -->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h6 id="clientNewModalLabel" class="modal-title inline-editable">
+                        <span class="sr-only"> Upload de arquivos </span>
+                    </h6>
+                </div><!-- /.modal-header -->
+                <span class="btn btn-success fileinput-button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Add files...</span>
+                    <input id="fileupload" type="file" name="files[]" multiple value="@ViewBag.projetoId">
+                </span>
+                <br />
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                        <span class="sr-only">0% complete</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- .table-responsive -->
+                    <div class="table-responsive">
+                        <!-- Tabela simples contendo linhas e colunas -->
+                        <table id="minhaTabela" class="table table-hover">
+                            <tr>
+                                <td>
+                                    Nome do Arquivo
+                                </td>
+                                <td>
+                                    Tipo
+                                </td>
+                                <td>
+                                    Tamanho
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" value="Index" formaction="/projetos/Index" formmethod="post" class="btn btn-primary">Fechar</button>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#fileupload').fileupload({
+            dataType: 'json',
+            url: '/projetos/UploadFiles/'+ @ViewBag.projetoId,
+            autoUpload: true,
+            done: function (e, data) {
+                // Captura a referência da tabela com id “minhaTabela”
+                var table = document.getElementById("minhaTabela");
+                // Captura a quantidade de linhas já existentes na tabela
+                var numOfRows = table.rows.length;
+                // Captura a quantidade de colunas da última linha da tabela
+                var numOfCols = table.rows[numOfRows - 1].cells.length;
+                // Insere uma linha no fim da tabela.
+                var newRow = table.insertRow(numOfRows);
+                newCell = newRow.insertCell(0);
+                newCell.innerHTML = data.result.name;
+                newCell = newRow.insertCell(1);
+                newCell.innerHTML = data.result.type;
+                newCell = newRow.insertCell(2);
+                newCell.innerHTML = data.result.size;
+            }
+        }).on('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.progress .progress-bar').css('width', progress + '%');
+        });
+    });
+</script>

@@ -1,0 +1,93 @@
+﻿@*@model PagedList.IPagedList<EasyProjectG.Models.tipo>
+    @using PagedList.Mvc;*@
+
+@model IEnumerable<EasyProjectG.ViewModel.tipoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="wrapper">
+    <div class="page">
+        <!-- .page -->
+        <div class="page-inner">
+            <header class="page-title-bar">
+                <!-- .breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">
+                            <a href="#"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Tipos</a>
+                        </li>
+                    </ol>
+                </nav><!-- /.breadcrumb -->
+                <!-- floating action -->
+                <button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button> <!-- /floating action -->
+                <!-- title and toolbar -->
+                <div class="d-md-flex align-items-md-start">
+                    <h1 class="page-title mr-sm-auto"> Datatables </h1><!-- .btn-toolbar -->
+                    <div id="dt-buttons" class="btn-toolbar"></div><!-- /.btn-toolbar -->
+                </div><!-- /title and toolbar -->
+            </header>
+            <div class="page-section">
+                <!-- .card -->
+                <div class="card card-fluid">
+                    <!-- .card-header -->
+                    <div class="card-header"> Default view </div><!-- /.card-header -->
+                    <!-- .card-body -->
+                    <div class="card-body">
+                        <!-- .form-group -->
+                        <div class="form-group">
+                            <!-- .input-group -->
+                            <div class="input-group input-group-alt">
+                                <!-- .input-group-prepend -->
+                                <div class="input-group-prepend">
+                                    <select id="filterBy" class="custom-select">
+                                        <option value='' selected> Filter By </option>
+                                        <option value="1"> Nome </option>
+                                        <option value="2"> Descrição </option>
+                                        <option value="3"> IDGrupo </option>
+                                        <option value="4"> Grupo Nome </option>
+                                    </select>
+                                </div><!-- /.input-group-prepend -->
+                                <!-- .input-group -->
+                                <div class="input-group has-clearable">
+                                    <button id="clear-search" type="button" class="close" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span></button>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
+                                    </div><input id="table-search" type="text" class="form-control" placeholder="Search products">
+                                </div><!-- /.input-group -->
+                            </div><!-- /.input-group -->
+                        </div><!-- /.form-group -->
+                        <!-- .table -->
+                        <table id="myTable" class="table">
+                            <!-- thead -->
+                            <thead>
+                                <tr>
+                                    <th> ID </th>
+                                    <th> Nome </th>
+                                    <th> Descrição </th>
+                                    <th> IDGrupo </th>
+                                    <th> Grupo Nome </th>
+                                    <th style="width:100px; min-width:100px;"> &nbsp; </th>
+                                </tr>
+                            </thead><!-- /thead -->
+                        </table><!-- /.table -->
+                    </div><!-- /.card-body -->
+                </div><!-- /.card -->
+            </div>
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+        </div>
+    </div><!-- /.page -->
+</div><!-- .app-footer -->
+
+<div id="modal" class="modal fade" />
+
+@section scripts{
+
+    <!-- BEGIN PAGE LEVEL JS -->
+    <script src="~/assets/javascript/pages/dataTables.bootstrap.js"></script>
+    <script src="~/assets/javascript/pages/tipos.js"></script>
+
+}
+
